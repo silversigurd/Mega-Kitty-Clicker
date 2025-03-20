@@ -91,12 +91,11 @@ export const accessories: Accessory[] = [
     position: { top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '80px' }
   }
 ];
-
 export const houseStyles: HouseStyle[] = [
   {
     id: 'default',
     name: 'Cozy Home',
-    backgroundImage: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000',
+    backgroundImage: 'src/components/dist/img/Cat/background2.jpg',
     price: 0,
     owned: true,
     description: 'A warm and welcoming space'

@@ -2,7 +2,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cat } from './components/Cat';
 import { Shop } from './components/Shop';
-import { Mouse } from './components/Mouse';
 import { Particle } from './components/Particle';
 import { cats as initialCats, accessories as initialAccessories, houseStyles as initialHouseStyles, beds as initialBeds, frames as initialFrames } from './data';
 import type { Cat as CatType, Accessory, HouseStyle, Bed, Frame } from './types';
@@ -23,7 +22,7 @@ function App() {
   const [showPoints, setShowPoints] = useState(false);
   const [particles, setParticles] = useState<{ id: number; x: number; y: number; emoji: string }[]>([]);
 
-    const emojis = ['✨✨✨✨', '✨✨✨✨', '✨✨✨✨', '🌟✨✨✨', '✨✨✨✨', '✨✨✨✨'];
+    const emojis = ['✨✨', '✨✨', '✨✨', '✨✨', '✨✨', '✨✨'];
   const numberOfMice = 5;
 
   const handleCatClick = (x: number, y: number) => {
@@ -100,11 +99,8 @@ function App() {
       className="relative min-h-screen overflow-hidden bg-cover bg-fixed bg-center p-8 transition-all duration-500"
       style={{ backgroundImage: `url(${selectedStyle.backgroundImage})` }}
     >
-      <div className="absolute inset-0 bg-white/30 backdrop-blur-sm"></div>
       
-      {Array.from({ length: numberOfMice }).map((_, i) => (
-        <Mouse key={i} />
-      ))}
+      
 
       <div className="relative mx-auto mb-20 max-w-4xl">
         <div className="mb-8 text-center">
