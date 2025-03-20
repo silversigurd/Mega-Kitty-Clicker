@@ -1,53 +1,51 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { Accessory, Frame } from '../types';
+import Catanimation from './Catanimation'; // Importa el nuevo componente
 
 interface CatProps {
-  image: string;
-  onClick: (x: number, y: number) => void;
-  accessories: Accessory[];
-  selectedBed?: string;
-  selectedFrame?: Frame;
+    image: string;
+    onClick: (x: number, y: number) => void;
+    accessories: Accessory[];
+    selectedBed?: string;
+    selectedFrame?: Frame;
 }
 
 export const Cat: React.FC<CatProps> = ({ image, onClick, accessories, selectedBed, selectedFrame }) => {
-  const handleClick = (e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    onClick(e.clientX - rect.left, e.clientY - rect.top);
-  };
+    const handleClick = (e: React.MouseEvent) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        onClick(e.clientX - rect.left, e.clientY - rect.top);
+    };
 
-  return (
-    <div className="relative inline-block">
-      {selectedBed && (
-        <img
-          src={selectedBed}
-          alt="Cat Bed"
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-auto -z-10"
-        />
-      )}
-      <motion.div
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={handleClick}
-        className="cursor-pointer relative"
-      >
-        <div className={`rounded-full overflow-hidden ${selectedFrame?.className || ''}`}>
-          <img 
-            src={image} 
-            alt="Cat" 
-            className="w-64 h-64 object-cover"
-          />
+    return (
+        <div className="relative inline-block">
+            {selectedBed && (
+                <img
+                    src={selectedBed}
+                    alt="Cat Bed"
+                    className="-translate-x-1/2 absolute bottom-0 left-1/2 -z-10 h-auto w-96 transform"
+                />
+            )}
+            <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={handleClick}
+                className="relative cursor-pointer"
+            >
+                <div className={`rounded-full overflow-hidden ${selectedFrame?.className || ''}`}>
+                    {/* Usa Catanimation en lugar de la imagen estática */}
+                    <Catanimation image={image} />
+                </div>
+                {accessories.map((accessory, index) => (
+                    <img
+                        key={index}
+                        src={accessory.image}
+                        alt={accessory.name}
+                        className="no-select pointer-events-none absolute"
+                        style={accessory.position}
+                    />
+                ))}
+            </motion.div>
         </div>
-        {accessories.map((accessory, index) => (
-          <img
-            key={index}
-            src={accessory.image}
-            alt={accessory.name}
-            className="absolute no-select pointer-events-none"
-            style={accessory.position}
-          />
-        ))}
-      </motion.div>
-    </div>
-  );
+    );
 };
