@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+//import React, { useState, useEffect } from 'react';
 import { Cat, Accessory, HouseStyle, Bed, Frame } from './types';
 
 export const cats: Cat[] = Array.from({ length: 10 }, (_, index) => ({
@@ -9,7 +9,7 @@ export const cats: Cat[] = Array.from({ length: 10 }, (_, index) => ({
     unlocked: true,
     description: `Frame ${index + 1} of your furry friend`,
     multiplier: 1
-}));
+} as Cat)); // Aserción de tipo
 
 export const accessories: Accessory[] = [
     {

@@ -5,10 +5,20 @@
 @tailwind utilities;
 
 .font-fredoka {
-  font-family: "Fredoka", sans-serif;
+    font-family: "Fredoka", sans-serif;
 }
 
 .no-select {
-  user-select: none;
-  -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+:root {
+    --scale: calc(min(100vw / 1920, 100vh / 1080));
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #000;
 }
